@@ -1,0 +1,68 @@
+[versions]
+java = "21"
+kotlin = "2.0.21"
+coroutines = "1.9.0"
+flatlaf = "3.5.1"
+kotest = "5.9.1"
+ignition = "8.1.20"
+jackson = "2.18.0"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+[libraries]
+# core functionality
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "coroutines" }
+serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.7.3" }
+logback = { group = "ch.qos.logback", name = "logback-classic", version = "1.5.10" }
+
+
+# appearance/swing
+miglayout = { group = "com.miglayout", name = "miglayout-swing", version = "11.4.2" }
+flatlaf-core = { group = "com.formdev", name = "flatlaf", version.ref = "flatlaf" }
+flatlaf-extras = { group = "com.formdev", name = "flatlaf-extras", version.ref = "flatlaf" }
+flatlaf-jide = { group = "com.formdev", name = "flatlaf-jide-oss", version.ref = "flatlaf" }
+flatlaf-swingx = { group = "com.formdev", name = "flatlaf-swingx", version.ref = "flatlaf" }
+flatlaf-themes = { group = "com.formdev", name = "flatlaf-intellij-themes", version.ref = "flatlaf" }
+flatlaf-fonts-roboto = { group = "com.formdev", name = "flatlaf-fonts-roboto", version = "2.137" }
+flatlaf-fonts-roboto-mono = { group = "com.formdev", name = "flatlaf-fonts-roboto-mono", version = "3.000" }
+jide-common = { group = "com.formdev", name = "jide-oss", version = "3.7.15" }
+swingx = { group = "org.swinglabs.swingx", name = "swingx-all", version = "1.6.5-1" }
+rsyntaxtextarea = { group = "com.fifesoft", name = "rsyntaxtextarea", version = "3.5.1" }
+jfreechart = { group = "org.jfree", name = "jfreechart", version = "1.5.5" }
+
+# Ignition
+#ignition-common = { group = "com.inductiveautomation.ignition", name = "common", version.ref = "ignition" }
+#ignition-gateway = { group = "com.inductiveautomation.ignition", name = "gateway-api", version.ref = "ignition" }
+## Ignition core types use classes from these libs (e.g. StringUtils, ImmutableMap), so we're forced to include these
+#apache-commons = { group = "org.apache.commons", name = "commons-lang3", version = "3.8.1" }
+## This leads to a warning at runtime about multiple logging providers on the classpath, but is unavoidable
+#slf4j = { group = "org.slf4j", name = "slf4j-log4j12", version = "2.0.16" }
+#google-guava = { module = "com.google.guava:guava", version = "26.0-jre" }
+#ia-gson = { module = "com.inductiveautomation.ignition:ia-gson", version = "2.10.1" }
+#ia-jython = { module = "org.python:jython-ia", version = "2.7.3.3" }
+
+# test framework
+kotest-junit = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
+
+[bundles]
+coroutines = [
+    "coroutines-core",
+    "coroutines-swing",
+]
+flatlaf = [
+    "flatlaf-core",
+    "flatlaf-extras",
+    "flatlaf-jide",
+    "flatlaf-swingx",
+    "flatlaf-themes",
+    "flatlaf-fonts-roboto",
+    "flatlaf-fonts-roboto-mono",
+]
+kotest = [
+    "kotest-junit",
+    "kotest-assertions-core",
+]
